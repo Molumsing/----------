@@ -1,65 +1,172 @@
 ﻿<!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dictionary</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Dictionary</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            font-family: 'Sarabun', Tahoma, 'Noto Sans Thai', sans-serif;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+    body {
+      font-family: 'Sarabun', Tahoma, 'Noto Sans Thai', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-        .welcome-box {
-            background-color: #1e1e1e;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            max-width: 600px;
-        }
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 30px;
+    }
 
-        h1 {
-            color: #90caf9;
-            margin-bottom: 10px;
-        }
+    h1 {
+      color: #90caf9;
+    }
 
-        p {
-            font-size: 18px;
-            color: #cccccc;
-            margin-bottom: 30px;
-        }
+    .menu-item {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 220px;
+      text-decoration: none;
+      color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background-color 0.3s;
+    }
 
-        a.button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #90caf9;
-            color: #121212;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-        }
+    .menu-item:hover {
+      transform: translateY(-5px);
+      background-color: #2a2a2a;
+    }
 
-            a.button:hover {
-                background-color: #64b5f6;
-            }
-    </style>
+    .menu-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .menu-label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #90caf9;
+      color: #121212;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    /* POPUP */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-box {
+      background-color: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .popup-box h2 {
+      color: #90caf9;
+      margin-bottom: 15px;
+    }
+
+    .popup-box p {
+      font-size: 16px;
+      color: #dddddd;
+      margin-bottom: 20px;
+    }
+
+    .close-popup {
+      background-color: #90caf9;
+      color: #121212;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .close-popup:hover {
+      background-color: #64b5f6;
+    }
+
+    .popup-hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="welcome-box">
-        <h1>ยินดีต้อนรับ!</h1>
-        <p>ขอบคุณที่เข้ามาเยี่ยมชมDictionaryของฉัน</p>
-        <a href="menu.html" class="button">เข้าสู่หน้าDictionary</a>
+  <!-- POPUP -->
+  <div id="popup" class="popup-overlay">
+    <div class="popup-box">
+      <h2>🎉 ไงเพื่อน!!!</h2>
+      <p>นี้คือเว็ป <br><strong>My Dictionary</strong><br>ยังเป็นเวอร์ชั่นทดลองนะจ๊ะ</p>
+      <button class="close-popup" onclick="closePopup()">ปิด</button>
     </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="menu-container">
+    <h1>My Dictionary</h1>
+
+    <a href="collection.html" class="menu-item">
+      <img src="https://media.discordapp.net/attachments/1114448932882358314/1375787380405174322/selection1.png?ex=683446d8&is=6832f558&hm=f0e92584590a5eb9d41237c0dae1361cb69180c4c06c6846a88ab04309aa5a2b&=&format=webp&quality=lossless&width=622&height=622" alt="ของสะสม" />
+      <div class="menu-label">ของสะสม</div>
+    </a>
+
+    <a href="collection1.html" class="menu-item">
+      <img src="https://media.discordapp.net/attachments/1114448932882358314/1375788593422925954/selection2.png?ex=683447f9&is=6832f679&hm=bb8b2492bddeed394909cf0191a962864ca2c038bfda9b8f5ed9f334a29df9ed&=&format=webp&quality=lossless&width=622&height=622" alt="เพลงโปรด" />
+      <div class="menu-label">เพลงโปรด</div>
+    </a>
+
+    <a href="R1.html" class="menu-item">
+      <img src="https://media.discordapp.net/attachments/1114448932882358314/1376018007674851348/selection5.png?ex=6833cc22&is=68327aa2&hm=f2ca6abbea341a72460cd2561ce888b697e25d1289ec16a1b63f47f7f0af23b4&=&format=webp&quality=lossless&width=622&height=622" alt="ข้อมูลส่วนตัว" />
+      <div class="menu-label">ข้อมูลส่วนตัว</div>
+    </a>
+
+    <div style="margin-top: 40px;">
+      <a href="index.html" class="back-button">กลับไปหน้าเมนู</a>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function closePopup() {
+      document.getElementById("popup").classList.add("popup-hidden");
+    }
+
+    window.onload = function () {
+      setTimeout(() => {
+        document.getElementById("popup").classList.remove("popup-hidden");
+      }, 300); // โหลดเสร็จแสดง popup
+    };
+  </script>
 </body>
 </html>
