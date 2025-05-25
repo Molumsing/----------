@@ -27,6 +27,36 @@
             margin-bottom: 40px;
         }
 
+        h2 {
+            margin-top: 40px;
+            color: #64b5f6;
+        }
+
+        .filter-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-box label {
+            font-size: 18px;
+            margin-right: 10px;
+            color: #90caf9;
+            font-weight: bold;
+        }
+
+        select {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .category-section {
+            display: block;
+        }
+
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -39,35 +69,31 @@
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,0,0,0.4);
             transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
-            .item:hover {
-                transform: scale(1.03);
-            }
+        .item:hover {
+            transform: scale(1.03);
+        }
 
-            .item img {
-                width: 100%;
-                height: 400px;
-                object-fit: cover;
-                display: block;
-            }
+        .item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
 
         .item-title {
-            padding: 15px 10px 5px;
+            padding: 15px;
             font-size: 16px;
             text-align: center;
+            color: #eeeeee;
         }
 
         .item-button {
             display: block;
-            margin: 10px auto 20px;
+            margin: 0 auto 20px;
             padding: 10px 20px;
             background-color: #90caf9;
             color: #121212;
-            text-align: center;
             text-decoration: none;
             font-weight: bold;
             border-radius: 6px;
@@ -75,13 +101,9 @@
             transition: background-color 0.3s;
         }
 
-            .item-button:hover {
-                background-color: #64b5f6;
-            }
-
-            .back-button:hover {
-                background-color: #64b5f6;
-            }
+        .item-button:hover {
+            background-color: #64b5f6;
+        }
 
         .back-container {
             text-align: center;
@@ -98,58 +120,96 @@
             border-radius: 6px;
             transition: background-color 0.3s;
         }
+
+        .back-button:hover {
+            background-color: #64b5f6;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>เพลงโปรด</h1>
-        <div class="gallery">
 
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">ซ่อนเธอไว้ในเพลง - Only Monday</div>
-                <a class="item-button" href="https://youtu.be/2GkbSjoO6sI?si=ukhgnflnpcbcl5H_" target="_blank">ลองฟัง</a>
-            </div>
+        <!-- กล่องเลือกศิลปิน -->
+        <div class="filter-box">
+            <label for="category">เลือกศิลปิน:</label>
+            <select id="category" onchange="filterSongs()">
+                <option value="all">ทั้งหมด</option>
+                <option value="OnlyMonday">Only Monday</option>
+                <option value="TillyBirds">Tilly Birds</option>
+                <option value="Big Ass">Big Ass</option>
+            </select>
+        </div>
 
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">บรรยากาศ – Only Monday</div>
-                <a class="item-button" href="https://youtu.be/w8I0_phB6Jw?si=5-i01M6uxca1_KVA" target="_blank">ลองฟัง</a>
-            </div>
+        <!-- หมวด Only Monday -->
+        <div class="category-section" data-section="OnlyMonday">
+            <h2>🎤 Only Monday</h2>
+            <div class="gallery">
+                <div class="item" data-category="OnlyMonday">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=6834704f&is=68331ecf&hm=d1187b6279071f9491a73f1321e4ff482d0f80900005add05d53cfab44eb33e2&=&format=webp&quality=lossless&width=622&height=622" alt="Only Monday">
+                    <div class="item-title">ซ่อนเธอไว้ในเพลง - Only Monday</div>
+                    <a class="item-button" href="https://www.youtube.com/watch?v=2GkbSjoO6sI" target="_blank">ลองฟัง</a>
+                </div>
 
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">จดจำ - Only Monday</div>
-                <a class="item-button" href="https://youtu.be/XJRkTyvoL4k?si=Uvs52iEDYleEydLy" target="_blank">ลองฟัง</a>
-            </div>
-
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">ท้ายปี - Only Monday</div>
-                <a class="item-button" href="https://youtu.be/GIVyXAs64Qw?si=1HOM9OS1JG31HXNm" target="_blank">ลองฟัง</a>
-            </div>
-
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">Happy New Year – Only Monday</div>
-                <a class="item-button" href="https://youtu.be/4ERu4XyYYUI?si=mzkWxqMRSEHRbCuV" target="_blank">ลองฟัง</a>
-            </div>
-
-            <!-- จบ -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=68331ecf&is=6831cd4f&hm=6c8e5b7dd1826870124ebbddc5bc7fb96a5aba424d75c0922d6e3d8329dc091a&=&format=webp&quality=lossless&width=350&height=350" alt="Onlymonday">
-                <div class="item-title">วันเกิดปีนี้ – Only Monday</div>
-                <a class="item-button" href="https://youtu.be/s0v5EPXQ3Mk?si=RQ6Z_v3ri7z9pVuH" target="_blank">ลองฟัง</a>
+                <div class="item" data-category="OnlyMonday">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1375831903520952340/selection5.png?ex=6834704f&is=68331ecf&hm=d1187b6279071f9491a73f1321e4ff482d0f80900005add05d53cfab44eb33e2&=&format=webp&quality=lossless&width=622&height=622" alt="Only Monday">
+                    <div class="item-title">ท้ายปี - Only Monday</div>
+                    <a class="item-button" href="https://youtu.be/GIVyXAs64Qw" target="_blank">ลองฟัง</a>
+                </div>
             </div>
         </div>
-        <!-- ปุ่มกลับไปหน้าเมนู -->
+
+        <!-- หมวด Tilly Birds -->
+        <div class="category-section" data-section="TillyBirds">
+            <h2>🎶 Tilly Birds</h2>
+            <div class="gallery">
+                <div class="item" data-category="TillyBirds">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1376246330971787398/selection7.png?ex=6834a0c6&is=68334f46&hm=0015406c68b6c478c6090ea4326c40f4bb05060831f73a74ec43794f3558b59d&=&format=webp&quality=lossless&width=518&height=518" alt="Tilly Birds">
+                    <div class="item-title">จากกันด้วยดี (Ordinary) - Tilly Birds</div>
+                    <a class="item-button" href="https://youtu.be/fBZfrZadyNM?si=0kbI42nn7ESZxDhB" target="_blank">ลองฟัง</a>
+                </div>
+
+                <div class="item" data-category="TillyBirds">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1376246330305019964/selection8.png?ex=6834a0c6&is=68334f46&hm=a9a52dbfd78588f64edb3665a698a85cb28212ee44cbb84cd92d40822cc0f734&=&format=webp&quality=lossless&width=518&height=518" alt="Tilly Birds">
+                    <div class="item-title">ถ้าเราเจอกันอีก (Until Then) - Tilly Birds</div>
+                    <a class="item-button" href="https://youtu.be/zwvv71slEYc?si=Xbf3CN0dPNAFt1Ma" target="_blank">ลองฟัง</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- หมวด Big Ass -->
+        <div class="category-section" data-section="Big Ass">
+            <h2>🎸 Big Ass</h2>
+            <div class="gallery">
+                <div class="item" data-category="Big Ass">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1376246329667358841/selection9.png?ex=6834a0c6&is=68334f46&hm=20e0f496e2f51874aba60b52a311ea2d72301b6c134862a4ab45e3de0707ad58&=&format=webp&quality=lossless&width=518&height=518" alt="Big Ass">
+                    <div class="item-title">ยักษ์ใหญ่ไล่ยักษ์เล็ก - Big Ass</div>
+                    <a class="item-button" href="https://youtu.be/5INHd8Ax0SA?si=9ErAEO3VFaFVSBkX" target="_blank">ลองฟัง</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ปุ่มกลับ -->
         <div class="back-container">
             <a href="menu.html" class="back-button">กลับไปหน้าเมนู</a>
         </div>
+    </div>
+
+    <!-- สคริปต์กรองหมวดหมู่ -->
+    <script>
+        function filterSongs() {
+            const selectedCategory = document.getElementById('category').value;
+            const sections = document.querySelectorAll('.category-section');
+
+            sections.forEach(section => {
+                const category = section.getAttribute('data-section');
+                if (selectedCategory === 'all' || selectedCategory === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
