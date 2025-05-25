@@ -24,7 +24,26 @@
         h1 {
             text-align: center;
             color: #90caf9;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            color: #64b5f6;
+        }
+
+        .filter-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            background-color: #1e1e1e;
+            color: #ffffff;
         }
 
         .gallery {
@@ -41,16 +60,16 @@
             transition: transform 0.3s;
         }
 
-            .item:hover {
-                transform: scale(1.03);
-            }
+        .item:hover {
+            transform: scale(1.03);
+        }
 
-            .item img {
-                width: 100%;
-                height: 400px;
-                object-fit: cover;
-                display: block;
-            }
+        .item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
 
         .item-title {
             padding: 15px;
@@ -70,33 +89,75 @@
             transition: background-color 0.3s;
         }
 
-            .back-button:hover {
-                background-color: #64b5f6;
-            }
+        .back-button:hover {
+            background-color: #64b5f6;
+        }
 
+        .category-section {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>ของสะสม</h1>
-        <div class="gallery">
 
-            <!-- ตัวอย่างของสะสม -->
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375789744839200820/selection3.png?ex=6832f78c&is=6831a60c&hm=4a698c33e7a902511da498ddc4e29fe1aa0e768fb67e8fa6e79dc8109d899d72&=&format=webp&quality=lossless&width=622&height=622" alt="กีตาร์ไฟฟ้า">
-                <div class="item-title">กีตาร์ไฟฟ้า Kazuki Newcomer ST</div>
-            </div>
+        <!-- กล่องตัวเลือกหมวดหมู่ -->
+        <div class="filter-box">
+            <label for="category">เลือกหมวดหมู่:</label>
+            <select id="category" onchange="filterItems()">
+                <option value="all">ทั้งหมด</option>
+                <option value="Music">เครื่องดนตรี</option>
+                <option value="Car">ยานพาหนะ</option>
+            </select>
+        </div>
 
-            <div class="item">
-                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375826107877691483/selection4.png?ex=68331969&is=6831c7e9&hm=469506a76dd45fe43055282cfc1aa8bd0cbbaf48eb8828b5f3d3fd1e5cb48e1c&=&format=webp&quality=lossless&width=622&height=622" alt="กีตาร์คลาสสิค">
-                <div class="item-title">กีตาร์โปร่งคลาสสิค Aria ak35ce</div>
-
+        <!-- หมวด: เครื่องดนตรี -->
+        <div class="category-section" data-section="Music">
+            <h2>🎸 เครื่องดนตรี</h2>
+            <div class="gallery">
+                <div class="item" data-category="Music">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1375789744839200820/selection3.png?ex=6834490c&is=6832f78c&hm=27f4605a3efe81baff49b3285711e1b748d78a80d4bb8cab9bdad83612f9f328&=&format=webp&quality=lossless&width=350&height=350" alt="กีตาร์ไฟฟ้า">
+                    <div class="item-title">กีตาร์ไฟฟ้า Kazuki Newcomer ST</div>
+                </div>
+                <div class="item" data-category="Music">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1375826107877691483/selection4.png?ex=68346ae9&is=68331969&hm=d2734c09a5cf274fcea323f940643a3902badde84eb9b7f2b91a9b1cd70a96f0&=&format=webp&quality=lossless&width=968&height=968" alt="กีตาร์คลาสสิค">
+                    <div class="item-title">กีตาร์โปร่งคลาสสิค Aria ak35ce</div>
+                </div>
             </div>
         </div>
+
+        <!-- หมวด: ยานพาหนะ -->
+        <div class="category-section" data-section="Car">
+            <h2>🏍️ ยานพาหนะ</h2>
+            <div class="gallery">
+                <div class="item" data-category="Car">
+                    <img src="https://media.discordapp.net/attachments/1114448932882358314/1376238169476829255/selection6.png?ex=6834992c&is=683347ac&hm=ca9fd8e2c44e1385e8cfd34b74febb1ecd65571cb69194e49138582852d1c7e9&=&format=webp&quality=lossless&width=622&height=622" alt="Honda CBR650R">
+                    <div class="item-title">Honda CBR650R</div>
+                </div>
+            </div>
+        </div>
+
         <!-- ปุ่มกลับไปหน้าเมนู -->
         <div style="text-align: center; margin-top: 40px;">
             <a href="menu.html" class="back-button">กลับไปหน้าเมนู</a>
         </div>
     </div>
+
+    <script>
+        function filterItems() {
+            const selectedCategory = document.getElementById('category').value;
+            const sections = document.querySelectorAll('.category-section');
+
+            sections.forEach(section => {
+                const category = section.getAttribute('data-section');
+                if (selectedCategory === 'all' || selectedCategory === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
