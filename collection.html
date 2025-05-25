@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ของสะสม</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+
+        body {
+            font-family: 'Sarabun', Tahoma, 'Noto Sans Thai', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #90caf9;
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .item {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        }
+
+            .item:hover {
+                transform: scale(1.03);
+            }
+
+            .item img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                display: block;
+            }
+
+        .item-title {
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+            color: #eeeeee;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #90caf9;
+            color: #121212;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+            .back-button:hover {
+                background-color: #64b5f6;
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ของสะสม</h1>
+        <div class="gallery">
+
+            <!-- ตัวอย่างของสะสม -->
+            <div class="item">
+                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375789744839200820/selection3.png?ex=6832f78c&is=6831a60c&hm=4a698c33e7a902511da498ddc4e29fe1aa0e768fb67e8fa6e79dc8109d899d72&=&format=webp&quality=lossless&width=622&height=622" alt="กีตาร์ไฟฟ้า">
+                <div class="item-title">กีตาร์ไฟฟ้า Kazuki Newcomer ST</div>
+            </div>
+
+            <div class="item">
+                <img src="https://media.discordapp.net/attachments/1114448932882358314/1375826107877691483/selection4.png?ex=68331969&is=6831c7e9&hm=469506a76dd45fe43055282cfc1aa8bd0cbbaf48eb8828b5f3d3fd1e5cb48e1c&=&format=webp&quality=lossless&width=622&height=622" alt="กีตาร์คลาสสิค">
+                <div class="item-title">กีตาร์โปร่งคลาสสิค Aria ak35ce</div>
+
+            </div>
+        </div>
+        <!-- ปุ่มกลับไปหน้าเมนู -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="menu.html" class="back-button">กลับไปหน้าเมนู</a>
+        </div>
+    </div>
+</body>
+</html>
